@@ -3,13 +3,14 @@ import random
 import time
 
 class Maze:
-    def __init__(self, x1, y1, num_rows, num_cols, cell_size_x, cell_size_y, win=None) -> None:
+    def __init__(self, x1, y1, num_rows, num_cols, cell_size_x, cell_size_y, seed = None, win=None) -> None:
         self.x1 = x1
         self.y1 = y1
         self.num_rows = num_rows
         self.num_cols = num_cols
         self.cell_size_x = cell_size_x
         self.cell_size_y = cell_size_y
+        self.seed = random.seed(seed)
         self.win = win
         self._cells = []
 
@@ -42,6 +43,14 @@ class Maze:
         self._draw_cell(0, 0)
         self._cells[self.num_cols - 1][self.num_rows - 1].has_bottom_wall = False
         self._draw_cell(self.num_cols - 1, self.num_rows - 1)
+
+    def _break_walls_r(self, i, j):
+        self._cells[i][j].visited = True
+        while self._cells[i][j].visited:
+            #self._cells[i][j] for i in range(self.num_cols) for j in range(self.num_rows) if (not self._cell[i][j].visted) and self._cell[i][j]
+            to_check = []
+            break
+        pass
 
     def _animate(self):
         if self.win is None:
